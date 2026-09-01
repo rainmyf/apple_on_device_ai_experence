@@ -1,0 +1,12 @@
+{"id":"synthetic-ev-001","text":"【星河充电】您在青岚路充电站充电36分钟，费用18.60元。","expectedDomain":"electric_vehicle_charging"}
+{"id":"synthetic-traffic-001","text":"【城市交管】车牌云A·00001于2026年9月1日在杉木路收到停车提醒，请查看详情。","expectedDomain":"traffic_police_attention"}
+{"id":"synthetic-train-001","text":"【铁路出行】G1234次列车将于9月8日08:20从云川站开往松林站，座席02车06号。","expectedDomain":"train_ticket"}
+{"id":"synthetic-delivery-001","text":"【速达】您的订单demo-order-001已到达云杉街驿站，取件码：云😀42。","expectedDomain":"delivery"}
+{"id":"synthetic-plane-001","text":"【云端航空】航班ZX123将于9月10日14:35从海岚机场飞往星港机场，座位12A。","expectedDomain":"plane_ticket"}
+{"id":"synthetic-assessment-001","text":"【学习中心】秋季测评第2轮将于9月12日09:00开始，请在18:00前回复是否参加。","expectedDomain":"assessment_arrangement_notice"}
+{"id":"synthetic-electricity-001","text":"【城市电力】账户demo-power-001本月可用余额42.50元，预计9月20日扣费。","expectedDomain":"electricity_balance"}
+{"id":"synthetic-mobile-001","text":"【移动通信】测试号码10086本月剩余流量12GB，套餐余额30.00元。","expectedDomain":"mobile_account_balance"}
+{"id":"synthetic-repayment-001","text":"【青禾银行】尾号0007的信用卡本期应还2750元，最低还款300元，还款日为9月28日。","expectedDomain":"repayment_information"}
+{"id":"synthetic-ignored-huabei-001","text":"【花呗】本期账单已生成，点击查看分期活动说明。","expectedDomain":"ignored"}
+{"id":"synthetic-ignored-promo-001","text":"【星光商城】新品优惠限时开启，回复退订。","expectedDomain":"ignored"}
+{"id":"synthetic-ignored-notice-001","text":"【社区公告】本周六上午进行楼道清洁，请住户错峰出行。","expectedDomain":"ignored"}

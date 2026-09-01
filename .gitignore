@@ -1,0 +1,7 @@
+.DS_Store
+build/
+DerivedData/
+*.xcresult
+xcuserdata/
+.superpowers/
+task-*-report.md
