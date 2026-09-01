@@ -2,13 +2,14 @@ import Testing
 @testable import AppleOnDeviceModelDemo
 
 struct ExperienceCatalogTests {
-    @Test func smsClassificationIsListedInLanguageTextAndResolvesToItsDestination() {
+    @Test func smsClassificationIsHiddenFromExperienceListsButStillResolvesToItsDestination() {
         let item = ExperienceCatalog[.smsClassification]
 
         #expect(item.title == "SMS Classification")
         #expect(item.category == .languageText)
         #expect(item.requirement == .appleIntelligence)
-        #expect(AppRouteResolver.items(in: .languageText).map(\.id).contains(.smsClassification))
+        #expect(!AppRouteResolver.items(in: .languageText).map(\.id).contains(.smsClassification))
+        #expect(!AppRouteResolver.featuredItems.map(\.id).contains(.smsClassification))
         #expect(AppRouteResolver.destinationKind(for: .experience(.smsClassification)) == .experience(.smsClassification))
         #expect(ExperienceCatalog.pageContract(for: .smsClassification).destination == .experience(.smsClassification))
     }
@@ -62,13 +63,14 @@ struct ExperienceCatalogTests {
         }
     }
 
-    @Test func homeDirectoryListsEveryExperienceExactlyOnceUnderItsCategory() {
+    @Test func homeDirectoryListsEveryVisibleExperienceExactlyOnceUnderItsCategory() {
         let sections = HomeDirectoryContent.sections
         let listedIDs = sections.flatMap(\.itemIDs)
+        let expectedIDs = Set(ExperienceID.allCases).subtracting([.smsClassification])
 
         #expect(sections.map(\.category) == ExperienceCategory.allCases)
-        #expect(listedIDs.count == ExperienceID.allCases.count)
-        #expect(Set(listedIDs) == Set(ExperienceID.allCases))
+        #expect(listedIDs.count == expectedIDs.count)
+        #expect(Set(listedIDs) == expectedIDs)
         for section in sections {
             #expect(section.itemIDs == AppRouteResolver.items(in: section.category).map(\.id))
             #expect(section.itemIDs.allSatisfy { ExperienceCatalog[$0].category == section.category })
@@ -135,7 +137,7 @@ struct ExperienceCatalogTests {
 
     @Test func categorySubsetsAndFeaturedOrderMatchTheHandDerivedGallery() {
         #expect(AppRouteResolver.items(in: .languageText).map(\.id) == [
-            .foundationModel, .guidedGeneration, .contentTagging, .smsClassification, .streaming,
+            .foundationModel, .guidedGeneration, .contentTagging, .streaming,
             .toolCalling, .translation, .naturalLanguage
         ])
         #expect(AppRouteResolver.items(in: .cameraVision).map(\.id) == [.vision])
