@@ -431,6 +431,12 @@ struct VisionExperienceView: View {
                     loadTask = Task { await load(item, generation: loadGeneration) }
                 }
 
+                NavigationLink(value: AppRoute.visionSegmentation) {
+                    Label("Interactive segmentation", systemImage: "wand.and.stars.inverse")
+                        .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(.bordered)
+
                 if let previewImage {
                     Image(uiImage: previewImage)
                         .resizable()

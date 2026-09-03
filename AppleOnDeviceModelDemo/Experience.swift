@@ -18,6 +18,12 @@ enum ExperienceRequirement: Equatable, Sendable {
     case photoLibrary, systemUI, entitlementAndAsset
 }
 
+enum ExperienceLifecycle: String, CaseIterable, Hashable, Sendable {
+    case active = "Active"
+    case deprecated = "Deprecated"
+    case obsoleted = "Obsoleted"
+}
+
 struct ExperienceDefinition: Identifiable, Hashable, Sendable {
     let id: ExperienceID
     let title: String
@@ -26,6 +32,14 @@ struct ExperienceDefinition: Identifiable, Hashable, Sendable {
     let category: ExperienceCategory
     let requirement: ExperienceRequirement
     let symbolName: String
+    let minimumOSVersion: String
+    let openedAPI: String
+    let isOnDevice: Bool
+    let lifecycle: ExperienceLifecycle
+
+    var versionBadge: String {
+        minimumOSVersion
+    }
 }
 
 enum ExperienceActionBoundary: String, CaseIterable, Hashable, Sendable {
@@ -67,6 +81,27 @@ struct HomeCuratedSection: Equatable, Sendable {
     let itemIDs: [ExperienceID]
 }
 
+struct HomeDirectionEntry: Equatable, Sendable {
+    let title: String
+    let summary: String
+    let route: AppRoute
+}
+
+enum HomeDirectionContent {
+    static let entries: [HomeDirectionEntry] = [
+        HomeDirectionEntry(
+            title: "App → On-device model",
+            summary: "Start with an app prompt and inspect the native model boundary.",
+            route: .experience(.foundationModel)
+        ),
+        HomeDirectionEntry(
+            title: "System intelligence → App",
+            summary: "Open the app action that system intelligence can invoke.",
+            route: .experience(.appIntents)
+        ),
+    ]
+}
+
 enum HomeCuratedContent {
     static let sections: [HomeCuratedSection] = [
         HomeCuratedSection(category: .languageText, itemIDs: [.foundationModel, .translation, .contentTagging]),
@@ -92,10 +127,6 @@ enum HomeDirectoryContent {
 enum ExperienceDisplayCopy {
     static func openingHint(for title: String) -> String {
         "Opens \(title)"
-    }
-
-    static func seeAllLabel(for category: ExperienceCategory) -> String {
-        "See all \(category.rawValue)"
     }
 
     static func categorySummary(for count: Int) -> String {

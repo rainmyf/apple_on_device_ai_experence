@@ -60,12 +60,14 @@ enum ExperienceGridCardPolicy {
 struct ExperienceGridCardPresentation: Equatable {
     let title: String
     let status: String
+    let versionBadge: String
     let accessibilityLabel: String
 
     init(experience: ExperienceDefinition) {
         title = experience.title
         status = experience.requirement.availabilityDescription
-        accessibilityLabel = "\(title). \(status)"
+        versionBadge = experience.versionBadge
+        accessibilityLabel = "\(title). \(versionBadge). \(status)"
     }
 }
 
@@ -96,6 +98,13 @@ struct ExperienceGridCard: View {
                         .lineLimit(ExperienceGridCardPolicy.titleLineLimit)
                         .fixedSize(horizontal: false, vertical: true)
                         .frame(maxWidth: .infinity, minHeight: 42, alignment: .topLeading)
+
+                Text(presentation.versionBadge)
+                    .font(.caption2.weight(.semibold))
+                    .foregroundStyle(AppTheme.accent(for: experience.category))
+                    .padding(.horizontal, 7)
+                    .padding(.vertical, 4)
+                    .background(AppTheme.accent(for: experience.category).opacity(0.10), in: Capsule())
 
                 HStack(alignment: .top, spacing: 5) {
                     Image(systemName: experience.requirement == .none ? "checkmark.circle" : "info.circle")

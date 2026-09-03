@@ -1,6 +1,10 @@
+import SwiftUI
+
 enum AppRoute: Hashable {
     case category(ExperienceCategory)
     case experience(ExperienceID)
+    case search(String)
+    case visionSegmentation
 }
 
 enum ExperienceDestinationKind: Hashable {
@@ -23,10 +27,6 @@ enum AppRouteResolver {
         .category(category)
     }
 
-    static func seeAllSelection(for category: ExperienceCategory) -> AppRoute {
-        categorySelection(for: category)
-    }
-
     static func items(in category: ExperienceCategory) -> [ExperienceDefinition] {
         ExperienceCatalog.all.filter {
             $0.category == category && $0.id != .smsClassification
@@ -39,6 +39,33 @@ enum AppRouteResolver {
             .category(category)
         case let .experience(id):
             .experience(id)
+        case .search:
+            .category(.languageText)
+        case .visionSegmentation:
+            .experience(.vision)
         }
+    }
+}
+
+@MainActor
+final class AppNavigationState: ObservableObject {
+    static let shared = AppNavigationState()
+
+    @Published var path: [AppRoute] = []
+
+    func open(_ route: AppRoute) {
+        path = [route]
+    }
+
+    func open(experience id: ExperienceID) {
+        open(.experience(id))
+    }
+
+    func showSearch(_ query: String) {
+        open(.search(query))
+    }
+
+    func reset() {
+        path.removeAll()
     }
 }

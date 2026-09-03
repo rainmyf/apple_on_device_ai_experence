@@ -2,6 +2,64 @@ import Testing
 @testable import AppleOnDeviceModelDemo
 
 struct ExperienceCatalogTests {
+    @Test func everyExperiencePublishesVersionedAPIOnDeviceAndLifecycleMetadata() {
+        #expect(ExperienceCatalog.all.count == ExperienceID.allCases.count)
+
+        let expected: [ExperienceID: (String, String, Bool, ExperienceLifecycle)] = [
+            .foundationModel: ("iOS 26.0", "SystemLanguageModel.default", true, .active),
+            .guidedGeneration: ("iOS 26.0", "LanguageModelSession.respond(to:)", true, .active),
+            .contentTagging: ("iOS 26.0", "Generable", true, .active),
+            .smsClassification: ("iOS 26.0", "LanguageModelSession.respond(to:)", true, .active),
+            .streaming: ("iOS 26.0", "LanguageModelSession.streamResponse(to:)", true, .active),
+            .toolCalling: ("iOS 26.0", "LanguageModelSession.Tool", true, .active),
+            .translation: ("iOS 26.0", "TranslationSession", true, .active),
+            .naturalLanguage: ("iOS 2.0", "NLTagger", true, .active),
+            .vision: ("iOS 13.0", "VNRecognizeTextRequest", true, .active),
+            .speechTranscription: ("iOS 26.0", "SpeechTranscriber", true, .active),
+            .soundRecognition: ("iOS 13.0", "SNAudioStreamAnalyzer", true, .active),
+            .imageCreator: ("iOS 26.4", "ImageCreator", true, .deprecated),
+            .imagePlayground: ("iOS 18.1", "ImagePlaygroundViewController", true, .active),
+            .writingTools: ("iOS 18.0", "SwiftUI.View.writingToolsBehavior(_:)", true, .active),
+            .genmoji: ("iOS 26.0", "UITextView", true, .active),
+            .smartReply: ("iOS 18.4", "UIConversationContext + UISmartReplySuggestion", true, .active),
+            .appIntents: ("iOS 16.0", "AppIntent", true, .active),
+            .customAdapter: ("iOS 26.0", "SystemLanguageModel.Adapter", true, .obsoleted),
+        ]
+
+        for item in ExperienceCatalog.all {
+            #expect((item.minimumOSVersion, item.openedAPI, item.isOnDevice, item.lifecycle) == expected[item.id]!)
+        }
+    }
+
+    @Test func iOS27MetadataKeepsSpecialLifecycleBoundariesExplicit() {
+        #expect(ExperienceCatalog[.imageCreator].minimumOSVersion == "iOS 26.4")
+        #expect(ExperienceCatalog[.imageCreator].openedAPI == "ImageCreator")
+        #expect(ExperienceCatalog[.imageCreator].lifecycle == .deprecated)
+
+        #expect(ExperienceCatalog[.customAdapter].minimumOSVersion == "iOS 26.0")
+        #expect(ExperienceCatalog[.customAdapter].openedAPI == "SystemLanguageModel.Adapter")
+        #expect(ExperienceCatalog[.customAdapter].lifecycle == .obsoleted)
+    }
+
+    @Test func homepageOffersBothDirectionsAndEveryVisibleCategory() {
+        #expect(HomeDirectionContent.entries.map(\.route) == [
+            .experience(.foundationModel),
+            .experience(.appIntents),
+        ])
+        #expect(HomeDirectionContent.entries.map(\.title) == [
+            "App → On-device model",
+            "System intelligence → App",
+        ])
+        #expect(HomeDirectoryContent.sections.map(\.category) == ExperienceCategory.allCases)
+        #expect(HomeDirectoryContent.sections.flatMap(\.itemIDs).contains(.smsClassification) == false)
+    }
+
+    @Test func visibleExperienceCardsExposeTheirMinimumOSVersionBadge() {
+        let presentation = ExperienceGridCardPresentation(experience: ExperienceCatalog[.imageCreator])
+
+        #expect(presentation.versionBadge == "iOS 26.4")
+    }
+
     @Test func smsClassificationIsHiddenFromExperienceListsButStillResolvesToItsDestination() {
         let item = ExperienceCatalog[.smsClassification]
 
@@ -79,7 +137,6 @@ struct ExperienceCatalogTests {
 
     @Test func displayCopyUsesValuesForAccessibilityAndStatusText() {
         #expect(ExperienceDisplayCopy.openingHint(for: "Speech Transcription") == "Opens Speech Transcription")
-        #expect(ExperienceDisplayCopy.seeAllLabel(for: .languageText) == "See all Language & Text")
         #expect(ExperienceDisplayCopy.categorySummary(for: 7) == "Explore 7 native capability experiences.")
         #expect(ExperienceDisplayCopy.preparedInputMessage(for: "FoundationModels") == "Input is ready for the FoundationModels integration.")
     }
@@ -89,7 +146,7 @@ struct ExperienceCatalogTests {
 
         #expect(presentation.title == "Foundation Model")
         #expect(presentation.status == "Requires Apple Intelligence")
-        #expect(presentation.accessibilityLabel == "Foundation Model. Requires Apple Intelligence")
+        #expect(presentation.accessibilityLabel == "Foundation Model. iOS 26.0. Requires Apple Intelligence")
     }
 
     @Test func gridCardPolicyPreservesTwoColumnGalleryWithBoundedText() {
@@ -128,10 +185,9 @@ struct ExperienceCatalogTests {
         #expect(AppRouteResolver.homeSelection(for: selected) == .experience(.contentTagging))
     }
 
-    @Test func categorySelectionAndSeeAllProduceOnlyCategoryRoutes() {
+    @Test func categorySelectionProducesOnlyCategoryRoutes() {
         for category in ExperienceCategory.allCases {
             #expect(AppRouteResolver.categorySelection(for: category) == .category(category))
-            #expect(AppRouteResolver.seeAllSelection(for: category) == .category(category))
         }
     }
 

@@ -7,7 +7,11 @@ enum ExperienceCatalog {
             framework: "FoundationModels",
             category: .languageText,
             requirement: .appleIntelligence,
-            symbolName: "sparkles"
+            symbolName: "sparkles",
+            minimumOSVersion: "iOS 26.0",
+            openedAPI: "SystemLanguageModel.default",
+            isOnDevice: true,
+            lifecycle: .active
         ),
         ExperienceDefinition(
             id: .guidedGeneration,
@@ -16,7 +20,11 @@ enum ExperienceCatalog {
             framework: "FoundationModels",
             category: .languageText,
             requirement: .appleIntelligence,
-            symbolName: "list.bullet.rectangle"
+            symbolName: "list.bullet.rectangle",
+            minimumOSVersion: "iOS 26.0",
+            openedAPI: "LanguageModelSession.respond(to:)",
+            isOnDevice: true,
+            lifecycle: .active
         ),
         ExperienceDefinition(
             id: .contentTagging,
@@ -25,7 +33,11 @@ enum ExperienceCatalog {
             framework: "FoundationModels",
             category: .languageText,
             requirement: .appleIntelligence,
-            symbolName: "tag"
+            symbolName: "tag",
+            minimumOSVersion: "iOS 26.0",
+            openedAPI: "Generable",
+            isOnDevice: true,
+            lifecycle: .active
         ),
         ExperienceDefinition(
             id: .smsClassification,
@@ -34,7 +46,11 @@ enum ExperienceCatalog {
             framework: "FoundationModels",
             category: .languageText,
             requirement: .appleIntelligence,
-            symbolName: "message.badge.filled.fill"
+            symbolName: "message.badge.filled.fill",
+            minimumOSVersion: "iOS 26.0",
+            openedAPI: "LanguageModelSession.respond(to:)",
+            isOnDevice: true,
+            lifecycle: .active
         ),
         ExperienceDefinition(
             id: .streaming,
@@ -43,7 +59,11 @@ enum ExperienceCatalog {
             framework: "FoundationModels",
             category: .languageText,
             requirement: .appleIntelligence,
-            symbolName: "text.line.first.and.arrowtriangle.forward"
+            symbolName: "text.line.first.and.arrowtriangle.forward",
+            minimumOSVersion: "iOS 26.0",
+            openedAPI: "LanguageModelSession.streamResponse(to:)",
+            isOnDevice: true,
+            lifecycle: .active
         ),
         ExperienceDefinition(
             id: .toolCalling,
@@ -52,7 +72,11 @@ enum ExperienceCatalog {
             framework: "FoundationModels",
             category: .languageText,
             requirement: .appleIntelligence,
-            symbolName: "wrench.and.screwdriver"
+            symbolName: "wrench.and.screwdriver",
+            minimumOSVersion: "iOS 26.0",
+            openedAPI: "LanguageModelSession.Tool",
+            isOnDevice: true,
+            lifecycle: .active
         ),
         ExperienceDefinition(
             id: .translation,
@@ -61,7 +85,11 @@ enum ExperienceCatalog {
             framework: "Translation",
             category: .languageText,
             requirement: .languageAssets,
-            symbolName: "character.bubble"
+            symbolName: "character.bubble",
+            minimumOSVersion: "iOS 26.0",
+            openedAPI: "TranslationSession",
+            isOnDevice: true,
+            lifecycle: .active
         ),
         ExperienceDefinition(
             id: .naturalLanguage,
@@ -70,7 +98,11 @@ enum ExperienceCatalog {
             framework: "NaturalLanguage",
             category: .languageText,
             requirement: .none,
-            symbolName: "textformat"
+            symbolName: "textformat",
+            minimumOSVersion: "iOS 2.0",
+            openedAPI: "NLTagger",
+            isOnDevice: true,
+            lifecycle: .active
         ),
         ExperienceDefinition(
             id: .vision,
@@ -79,7 +111,11 @@ enum ExperienceCatalog {
             framework: "Vision",
             category: .cameraVision,
             requirement: .photoLibrary,
-            symbolName: "viewfinder"
+            symbolName: "viewfinder",
+            minimumOSVersion: "iOS 13.0",
+            openedAPI: "VNRecognizeTextRequest",
+            isOnDevice: true,
+            lifecycle: .active
         ),
         ExperienceDefinition(
             id: .speechTranscription,
@@ -88,7 +124,11 @@ enum ExperienceCatalog {
             framework: "Speech",
             category: .voiceSound,
             requirement: .microphone,
-            symbolName: "waveform"
+            symbolName: "waveform",
+            minimumOSVersion: "iOS 26.0",
+            openedAPI: "SpeechTranscriber",
+            isOnDevice: true,
+            lifecycle: .active
         ),
         ExperienceDefinition(
             id: .soundRecognition,
@@ -97,7 +137,11 @@ enum ExperienceCatalog {
             framework: "SoundAnalysis",
             category: .voiceSound,
             requirement: .microphone,
-            symbolName: "waveform.badge.mic"
+            symbolName: "waveform.badge.mic",
+            minimumOSVersion: "iOS 13.0",
+            openedAPI: "SNAudioStreamAnalyzer",
+            isOnDevice: true,
+            lifecycle: .active
         ),
         ExperienceDefinition(
             id: .imageCreator,
@@ -106,7 +150,11 @@ enum ExperienceCatalog {
             framework: "Image Playground",
             category: .createSystem,
             requirement: .appleIntelligence,
-            symbolName: "photo.artframe"
+            symbolName: "photo.artframe",
+            minimumOSVersion: "iOS 26.4",
+            openedAPI: "ImageCreator",
+            isOnDevice: true,
+            lifecycle: .deprecated
         ),
         ExperienceDefinition(
             id: .imagePlayground,
@@ -115,7 +163,11 @@ enum ExperienceCatalog {
             framework: "ImagePlayground",
             category: .createSystem,
             requirement: .systemUI,
-            symbolName: "wand.and.stars"
+            symbolName: "wand.and.stars",
+            minimumOSVersion: "iOS 18.1",
+            openedAPI: "ImagePlaygroundViewController",
+            isOnDevice: true,
+            lifecycle: .active
         ),
         ExperienceDefinition(
             id: .writingTools,
@@ -124,7 +176,11 @@ enum ExperienceCatalog {
             framework: "UIKit",
             category: .createSystem,
             requirement: .systemUI,
-            symbolName: "pencil.and.outline"
+            symbolName: "pencil.and.outline",
+            minimumOSVersion: "iOS 18.0",
+            openedAPI: "SwiftUI.View.writingToolsBehavior(_:)",
+            isOnDevice: true,
+            lifecycle: .active
         ),
         ExperienceDefinition(
             id: .genmoji,
@@ -133,7 +189,11 @@ enum ExperienceCatalog {
             framework: "UIKit",
             category: .createSystem,
             requirement: .systemUI,
-            symbolName: "face.smiling"
+            symbolName: "face.smiling",
+            minimumOSVersion: "iOS 26.0",
+            openedAPI: "UITextView",
+            isOnDevice: true,
+            lifecycle: .active
         ),
         ExperienceDefinition(
             id: .smartReply,
@@ -142,7 +202,11 @@ enum ExperienceCatalog {
             framework: "UIKit",
             category: .createSystem,
             requirement: .systemUI,
-            symbolName: "arrowshape.turn.up.left.2"
+            symbolName: "arrowshape.turn.up.left.2",
+            minimumOSVersion: "iOS 18.4",
+            openedAPI: "UIConversationContext + UISmartReplySuggestion",
+            isOnDevice: true,
+            lifecycle: .active
         ),
         ExperienceDefinition(
             id: .appIntents,
@@ -151,7 +215,11 @@ enum ExperienceCatalog {
             framework: "AppIntents",
             category: .createSystem,
             requirement: .none,
-            symbolName: "app.badge"
+            symbolName: "app.badge",
+            minimumOSVersion: "iOS 16.0",
+            openedAPI: "AppIntent",
+            isOnDevice: true,
+            lifecycle: .active
         ),
         ExperienceDefinition(
             id: .customAdapter,
@@ -160,7 +228,11 @@ enum ExperienceCatalog {
             framework: "FoundationModels",
             category: .createSystem,
             requirement: .entitlementAndAsset,
-            symbolName: "shippingbox"
+            symbolName: "shippingbox",
+            minimumOSVersion: "iOS 26.0",
+            openedAPI: "SystemLanguageModel.Adapter",
+            isOnDevice: true,
+            lifecycle: .obsoleted
         ),
     ]
 

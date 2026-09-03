@@ -53,6 +53,17 @@
 		100000000000000000000036 /* SMSClassifierPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000036 /* SMSClassifierPrompt.swift */; };
 		100000000000000000000037 /* SMSClassificationPresentationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000037 /* SMSClassificationPresentationTests.swift */; };
 		100000000000000000000038 /* SMSClassificationExperience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000038 /* SMSClassificationExperience.swift */; };
+		100000000000000000000039 /* SMSDeviceEvaluationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000039 /* SMSDeviceEvaluationTests.swift */; };
+		100000000000000000000040 /* sms_device_eval_30.jsonl in Resources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000040 /* sms_device_eval_30.jsonl */; };
+		100000000000000000000041 /* OnDeviceModelLabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000041 /* OnDeviceModelLabTests.swift */; };
+		100000000000000000000042 /* OnDeviceModelLab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000042 /* OnDeviceModelLab.swift */; };
+		100000000000000000000043 /* OnDeviceModelLabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000043 /* OnDeviceModelLabView.swift */; };
+		100000000000000000000044 /* VisionSegmentationExperience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000044 /* VisionSegmentationExperience.swift */; };
+		100000000000000000000045 /* VisionSegmentationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000045 /* VisionSegmentationView.swift */; };
+		100000000000000000000046 /* VisionSegmentationExperienceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000046 /* VisionSegmentationExperienceTests.swift */; };
+		100000000000000000000047 /* ExperienceIndexing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000047 /* ExperienceIndexing.swift */; };
+		100000000000000000000048 /* ExperienceAppIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000048 /* ExperienceAppIntents.swift */; };
+		100000000000000000000049 /* ExperienceAppIntentsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000049 /* ExperienceAppIntentsTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +125,17 @@
 		200000000000000000000036 /* SMSClassifierPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSClassifierPrompt.swift; sourceTree = "<group>"; };
 		200000000000000000000037 /* SMSClassificationPresentationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSClassificationPresentationTests.swift; sourceTree = "<group>"; };
 		200000000000000000000038 /* SMSClassificationExperience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSClassificationExperience.swift; sourceTree = "<group>"; };
+		200000000000000000000039 /* SMSDeviceEvaluationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSDeviceEvaluationTests.swift; sourceTree = "<group>"; };
+		200000000000000000000040 /* sms_device_eval_30.jsonl */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = sms_device_eval_30.jsonl; sourceTree = "<group>"; };
+		200000000000000000000041 /* OnDeviceModelLabTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnDeviceModelLabTests.swift; sourceTree = "<group>"; };
+		200000000000000000000042 /* OnDeviceModelLab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnDeviceModelLab.swift; sourceTree = "<group>"; };
+		200000000000000000000043 /* OnDeviceModelLabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnDeviceModelLabView.swift; sourceTree = "<group>"; };
+		200000000000000000000044 /* VisionSegmentationExperience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionSegmentationExperience.swift; sourceTree = "<group>"; };
+		200000000000000000000045 /* VisionSegmentationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionSegmentationView.swift; sourceTree = "<group>"; };
+		200000000000000000000046 /* VisionSegmentationExperienceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionSegmentationExperienceTests.swift; sourceTree = "<group>"; };
+		200000000000000000000047 /* ExperienceIndexing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceIndexing.swift; sourceTree = "<group>"; };
+		200000000000000000000048 /* ExperienceAppIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceAppIntents.swift; sourceTree = "<group>"; };
+		200000000000000000000049 /* ExperienceAppIntentsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceAppIntentsTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +198,12 @@
 				200000000000000000000035 /* SMSClassificationService.swift */,
 				200000000000000000000036 /* SMSClassifierPrompt.swift */,
 				200000000000000000000038 /* SMSClassificationExperience.swift */,
+				200000000000000000000042 /* OnDeviceModelLab.swift */,
+				200000000000000000000043 /* OnDeviceModelLabView.swift */,
+				200000000000000000000044 /* VisionSegmentationExperience.swift */,
+				200000000000000000000045 /* VisionSegmentationView.swift */,
+				200000000000000000000047 /* ExperienceIndexing.swift */,
+				200000000000000000000048 /* ExperienceAppIntents.swift */,
 			);
 			path = AppleOnDeviceModelDemo;
 			sourceTree = "<group>";
@@ -199,6 +227,11 @@
 				200000000000000000000031 /* SMSRandomSamplesTests.swift */,
 				200000000000000000000034 /* SMSClassificationServiceTests.swift */,
 				200000000000000000000037 /* SMSClassificationPresentationTests.swift */,
+				200000000000000000000039 /* SMSDeviceEvaluationTests.swift */,
+				200000000000000000000041 /* OnDeviceModelLabTests.swift */,
+				200000000000000000000046 /* VisionSegmentationExperienceTests.swift */,
+				200000000000000000000049 /* ExperienceAppIntentsTests.swift */,
+				700000000000000000000005 /* Resources */,
 			);
 			path = AppleOnDeviceModelDemoTests;
 			sourceTree = "<group>";
@@ -210,6 +243,14 @@
 				200000000000000000000008 /* AppleOnDeviceModelDemoTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		700000000000000000000005 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				200000000000000000000040 /* sms_device_eval_30.jsonl */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -301,6 +342,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				100000000000000000000040 /* sms_device_eval_30.jsonl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +381,12 @@
 				100000000000000000000035 /* SMSClassificationService.swift in Sources */,
 				100000000000000000000036 /* SMSClassifierPrompt.swift in Sources */,
 				100000000000000000000038 /* SMSClassificationExperience.swift in Sources */,
+				100000000000000000000042 /* OnDeviceModelLab.swift in Sources */,
+				100000000000000000000043 /* OnDeviceModelLabView.swift in Sources */,
+				100000000000000000000044 /* VisionSegmentationExperience.swift in Sources */,
+				100000000000000000000045 /* VisionSegmentationView.swift in Sources */,
+				100000000000000000000047 /* ExperienceIndexing.swift in Sources */,
+				100000000000000000000048 /* ExperienceAppIntents.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,6 +410,10 @@
 				100000000000000000000031 /* SMSRandomSamplesTests.swift in Sources */,
 				100000000000000000000034 /* SMSClassificationServiceTests.swift in Sources */,
 				100000000000000000000037 /* SMSClassificationPresentationTests.swift in Sources */,
+				100000000000000000000039 /* SMSDeviceEvaluationTests.swift in Sources */,
+				100000000000000000000041 /* OnDeviceModelLabTests.swift in Sources */,
+				100000000000000000000046 /* VisionSegmentationExperienceTests.swift in Sources */,
+				100000000000000000000049 /* ExperienceAppIntentsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,7 +439,7 @@
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
@@ -405,7 +457,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu17;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -423,7 +475,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This demo uses the microphone for on-device speech transcription and sound recognition.";
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.AppleOnDeviceModelDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -443,7 +495,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This demo uses the microphone for on-device speech transcription and sound recognition.";
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.AppleOnDeviceModelDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -461,7 +513,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DH255M46VJ;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.AppleOnDeviceModelDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 6.0;
@@ -477,7 +529,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DH255M46VJ;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.AppleOnDeviceModelDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 6.0;

@@ -1,10 +1,14 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var path: [AppRoute] = []
+    @ObservedObject var navigation: AppNavigationState
+
+    init(navigation: AppNavigationState = .shared) {
+        self.navigation = navigation
+    }
 
     var body: some View {
-        NavigationStack(path: $path) {
+        NavigationStack(path: $navigation.path) {
             HomeView()
                 .navigationDestination(for: AppRoute.self) { route in
                     switch route {
@@ -12,6 +16,10 @@ struct ContentView: View {
                         CategoryView(category: category)
                     case let .experience(id):
                         ExperienceDestinationView(experience: ExperienceCatalog[id])
+                    case let .search(query):
+                        ExperienceSearchView(query: query, navigation: navigation)
+                    case .visionSegmentation:
+                        VisionSegmentationView()
                     }
                 }
         }

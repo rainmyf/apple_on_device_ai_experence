@@ -76,6 +76,23 @@ final class FoundationModelService: Sendable {
         availabilityProvider(contentTaggingModel)
     }
 
+    /// Native model metadata used by the open-ended iOS 27 lab. The existing
+    /// `respond(to:)` API remains unchanged for App Intent and Shortcut callers.
+    @available(iOS 27.0, *)
+    var modelVariantDisplayName: String {
+        model.variant.displayName
+    }
+
+    @available(iOS 27.0, *)
+    var modelCapabilities: LanguageModelCapabilities {
+        model.capabilities
+    }
+
+    @available(iOS 27.0, *)
+    var modelContextSize: Int {
+        model.contextSize
+    }
+
     static func status(
         for availability: SystemLanguageModel.Availability
     ) -> FoundationModelStatus {

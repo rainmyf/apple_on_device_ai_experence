@@ -6,6 +6,8 @@ struct HomeView: View {
             VStack(alignment: .leading, spacing: 28) {
                 homeHeader
 
+                directionSection
+
                 ForEach(Array(HomeDirectoryContent.sections.enumerated()), id: \.element.category) { index, section in
                     if index > 0 {
                         Divider()
@@ -20,6 +22,23 @@ struct HomeView: View {
         .scrollIndicators(.hidden)
         .background(AppTheme.background.ignoresSafeArea())
         .navigationBarTitleDisplayMode(.inline)
+    }
+
+    private var directionSection: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            Text("Choose an entry point")
+                .font(.title2.weight(.semibold))
+                .foregroundStyle(AppTheme.ink)
+
+            LazyVGrid(
+                columns: Array(repeating: GridItem(.flexible(), spacing: 12), count: ExperienceGridCardPolicy.columnCount),
+                spacing: 12
+            ) {
+                ForEach(HomeDirectionContent.entries, id: \.title) { entry in
+                    HomeDirectionCard(entry: entry)
+                }
+            }
+        }
     }
 
     private var homeHeader: some View {
@@ -54,6 +73,57 @@ struct HomeView: View {
                     ExperienceGridCard(experience: item)
                 }
             }
+        }
+    }
+}
+
+private struct HomeDirectionCard: View {
+    let entry: HomeDirectionEntry
+
+    var body: some View {
+        NavigationLink(value: entry.route) {
+            VStack(alignment: .leading, spacing: 10) {
+                Image(systemName: symbolName)
+                    .font(.title2.weight(.semibold))
+                    .foregroundStyle(AppTheme.accent(for: category))
+                    .frame(width: 42, height: 42)
+                    .background(AppTheme.accent(for: category).opacity(0.14), in: Circle())
+                    .accessibilityHidden(true)
+
+                Text(entry.title)
+                    .font(.headline)
+                    .foregroundStyle(AppTheme.ink)
+                    .multilineTextAlignment(.leading)
+
+                Text(entry.summary)
+                    .font(.caption)
+                    .foregroundStyle(AppTheme.secondaryInk)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+            .padding(14)
+            .frame(maxWidth: .infinity, minHeight: 154, alignment: .topLeading)
+            .background(.white.opacity(0.72), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+            .overlay {
+                RoundedRectangle(cornerRadius: 18, style: .continuous)
+                    .stroke(AppTheme.accent(for: category).opacity(0.22), lineWidth: 1)
+            }
+        }
+        .buttonStyle(.plain)
+        .accessibilityHint("Opens entry point")
+    }
+
+    private var category: ExperienceCategory {
+        switch entry.route {
+        case .experience(.appIntents): .createSystem
+        default: .languageText
+        }
+    }
+
+    private var symbolName: String {
+        switch entry.route {
+        case .experience(.appIntents): "arrow.triangle.2.circlepath"
+        default: "sparkles"
         }
     }
 }

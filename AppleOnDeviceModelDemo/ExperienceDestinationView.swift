@@ -8,7 +8,7 @@ struct ExperienceDestinationView: View {
         Group {
             switch experience.id {
             case .foundationModel:
-                FoundationModelExperienceView()
+                OnDeviceModelLabView()
             case .guidedGeneration:
                 GuidedGenerationExperienceView()
             case .contentTagging:
