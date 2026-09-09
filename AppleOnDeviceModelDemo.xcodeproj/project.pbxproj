@@ -1,0 +1,682 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 71;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		100000000000000000000001 /* AppleOnDeviceModelDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000001 /* AppleOnDeviceModelDemoApp.swift */; };
+		100000000000000000000002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000002 /* ContentView.swift */; };
+		100000000000000000000004 /* SpeechInputService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000004 /* SpeechInputService.swift */; };
+		100000000000000000000021 /* SpeechExperience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000021 /* SpeechExperience.swift */; };
+		100000000000000000000023 /* SoundAnalysisExperience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000023 /* SoundAnalysisExperience.swift */; };
+		100000000000000000000024 /* ImageExperiences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000024 /* ImageExperiences.swift */; };
+		100000000000000000000026 /* SystemExperiences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000026 /* SystemExperiences.swift */; };
+		100000000000000000000027 /* SampleAppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000027 /* SampleAppIntent.swift */; };
+		100000000000000000000005 /* FoundationModelService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000005 /* FoundationModelService.swift */; };
+		100000000000000000000018 /* FoundationExperiences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000018 /* FoundationExperiences.swift */; };
+		10000000000000000000001D /* NaturalLanguageExperience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000000000000000000001D /* NaturalLanguageExperience.swift */; };
+		10000000000000000000001E /* TranslationExperience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000000000000000000001E /* TranslationExperience.swift */; };
+		10000000000000000000001F /* VisionExperience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000000000000000000001F /* VisionExperience.swift */; };
+		10000000000000000000000A /* Experience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000000000000000000000C /* Experience.swift */; };
+		10000000000000000000000B /* ExperienceCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000000000000000000000D /* ExperienceCatalog.swift */; };
+		10000000000000000000000C /* AppRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000000000000000000000E /* AppRoute.swift */; };
+		10000000000000000000000E /* CapabilityAvailability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000010 /* CapabilityAvailability.swift */; };
+		100000000000000000000011 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000011 /* AppTheme.swift */; };
+		100000000000000000000012 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000012 /* HomeView.swift */; };
+		100000000000000000000013 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000013 /* CategoryView.swift */; };
+		100000000000000000000014 /* SharedExperienceViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000014 /* SharedExperienceViews.swift */; };
+		100000000000000000000015 /* ExperienceDestinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000015 /* ExperienceDestinationView.swift */; };
+		100000000000000000000016 /* ExperienceOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000017 /* ExperienceOperation.swift */; };
+		100000000000000000000006 /* FoundationModelServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000006 /* FoundationModelServiceTests.swift */; };
+		100000000000000000000007 /* SpeechTranscriptAccumulatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000009 /* SpeechTranscriptAccumulatorTests.swift */; };
+		100000000000000000000009 /* ExperienceCatalogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000000000000000000000B /* ExperienceCatalogTests.swift */; };
+		10000000000000000000000D /* CapabilityAvailabilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000000000000000000000F /* CapabilityAvailabilityTests.swift */; };
+		100000000000000000000017 /* ExperienceOperationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000016 /* ExperienceOperationTests.swift */; };
+		100000000000000000000019 /* FoundationExperienceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000019 /* FoundationExperienceTests.swift */; };
+		10000000000000000000001A /* FoundationStreamingToolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000000000000000000001A /* FoundationStreamingToolTests.swift */; };
+		10000000000000000000001B /* NaturalLanguageExperienceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000000000000000000001B /* NaturalLanguageExperienceTests.swift */; };
+		10000000000000000000001C /* TranslationExperienceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000000000000000000001C /* TranslationExperienceTests.swift */; };
+		100000000000000000000020 /* VisionExperienceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000020 /* VisionExperienceTests.swift */; };
+		100000000000000000000022 /* SoundAnalysisExperienceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000022 /* SoundAnalysisExperienceTests.swift */; };
+		100000000000000000000025 /* SystemExperienceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000025 /* SystemExperienceTests.swift */; };
+		100000000000000000000028 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 200000000000000000000028 /* Security.framework */; };
+		100000000000000000000041 /* OnDeviceModelLabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000041 /* OnDeviceModelLabTests.swift */; };
+		100000000000000000000042 /* OnDeviceModelLab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000042 /* OnDeviceModelLab.swift */; };
+		100000000000000000000043 /* OnDeviceModelLabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000043 /* OnDeviceModelLabView.swift */; };
+		100000000000000000000044 /* VisionSegmentationExperience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000044 /* VisionSegmentationExperience.swift */; };
+		100000000000000000000045 /* VisionSegmentationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000045 /* VisionSegmentationView.swift */; };
+		100000000000000000000046 /* VisionSegmentationExperienceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000046 /* VisionSegmentationExperienceTests.swift */; };
+		100000000000000000000047 /* ExperienceIndexing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000047 /* ExperienceIndexing.swift */; };
+		100000000000000000000048 /* ExperienceAppIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000048 /* ExperienceAppIntents.swift */; };
+		100000000000000000000049 /* ExperienceAppIntentsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000049 /* ExperienceAppIntentsTests.swift */; };
+		100000000000000000000061 /* DemoLiveActivityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000061 /* DemoLiveActivityTests.swift */; };
+		100000000000000000000062 /* DemoLiveActivityShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000062 /* DemoLiveActivityShared.swift */; };
+		100000000000000000000063 /* DemoLiveActivityCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000063 /* DemoLiveActivityCoordinator.swift */; };
+		100000000000000000000064 /* SystemIntelligenceToAppVerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000064 /* SystemIntelligenceToAppVerificationView.swift */; };
+		100000000000000000000065 /* DemoLiveActivityWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000065 /* DemoLiveActivityWidget.swift */; };
+		100000000000000000000066 /* DemoLiveActivityShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000062 /* DemoLiveActivityShared.swift */; };
+		100000000000000000000067 /* DemoLiveActivity.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 200000000000000000000066 /* DemoLiveActivity.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		100000000000000000000071 /* SMSIncomingClassification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000071 /* SMSIncomingClassification.swift */; };
+		100000000000000000000072 /* SMSIncomingClassificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000072 /* SMSIncomingClassificationService.swift */; };
+		100000000000000000000073 /* SMSIncomingClassificationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000073 /* SMSIncomingClassificationTests.swift */; };
+		100000000000000000000074 /* SMSIncomingClassificationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000074 /* SMSIncomingClassificationServiceTests.swift */; };
+		100000000000000000000078 /* SMSIncomingSamplePool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000078 /* SMSIncomingSamplePool.swift */; };
+		100000000000000000000079 /* SMSIncomingSamplePoolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000079 /* SMSIncomingSamplePoolTests.swift */; };
+		100000000000000000000080 /* sms_incoming_samples.jsonl in Resources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000080 /* sms_incoming_samples.jsonl */; };
+		100000000000000000000081 /* sms_incoming_samples.jsonl in Resources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000080 /* sms_incoming_samples.jsonl */; };
+		100000000000000000000075 /* DemoLiveActivityWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000065 /* DemoLiveActivityWidget.swift */; };
+		100000000000000000000076 /* DemoLiveActivityShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000062 /* DemoLiveActivityShared.swift */; };
+		100000000000000000000077 /* Info.plist */ = {isa = PBXBuildFile; fileRef = 200000000000000000000077 /* Info.plist */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		300000000000000000000001 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 400000000000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 500000000000000000000001;
+			remoteInfo = AppleOnDeviceModelDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		200000000000000000000001 /* AppleOnDeviceModelDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleOnDeviceModelDemoApp.swift; sourceTree = "<group>"; };
+		200000000000000000000002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		200000000000000000000004 /* SpeechInputService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechInputService.swift; sourceTree = "<group>"; };
+		200000000000000000000021 /* SpeechExperience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechExperience.swift; sourceTree = "<group>"; };
+		200000000000000000000023 /* SoundAnalysisExperience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundAnalysisExperience.swift; sourceTree = "<group>"; };
+		200000000000000000000024 /* ImageExperiences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExperiences.swift; sourceTree = "<group>"; };
+		200000000000000000000026 /* SystemExperiences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemExperiences.swift; sourceTree = "<group>"; };
+		200000000000000000000027 /* SampleAppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleAppIntent.swift; sourceTree = "<group>"; };
+		200000000000000000000005 /* FoundationModelService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationModelService.swift; sourceTree = "<group>"; };
+		200000000000000000000018 /* FoundationExperiences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationExperiences.swift; sourceTree = "<group>"; };
+		20000000000000000000001D /* NaturalLanguageExperience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaturalLanguageExperience.swift; sourceTree = "<group>"; };
+		20000000000000000000001E /* TranslationExperience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationExperience.swift; sourceTree = "<group>"; };
+		20000000000000000000001F /* VisionExperience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionExperience.swift; sourceTree = "<group>"; };
+		20000000000000000000000C /* Experience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Experience.swift; sourceTree = "<group>"; };
+		20000000000000000000000D /* ExperienceCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceCatalog.swift; sourceTree = "<group>"; };
+		20000000000000000000000E /* AppRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRoute.swift; sourceTree = "<group>"; };
+		200000000000000000000010 /* CapabilityAvailability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapabilityAvailability.swift; sourceTree = "<group>"; };
+		200000000000000000000011 /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
+		200000000000000000000012 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		200000000000000000000013 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
+		200000000000000000000014 /* SharedExperienceViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedExperienceViews.swift; sourceTree = "<group>"; };
+		200000000000000000000015 /* ExperienceDestinationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceDestinationView.swift; sourceTree = "<group>"; };
+		200000000000000000000017 /* ExperienceOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceOperation.swift; sourceTree = "<group>"; };
+		200000000000000000000006 /* FoundationModelServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationModelServiceTests.swift; sourceTree = "<group>"; };
+		200000000000000000000007 /* AppleOnDeviceModelDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppleOnDeviceModelDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		200000000000000000000008 /* AppleOnDeviceModelDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppleOnDeviceModelDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		200000000000000000000009 /* SpeechTranscriptAccumulatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechTranscriptAccumulatorTests.swift; sourceTree = "<group>"; };
+		20000000000000000000000B /* ExperienceCatalogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceCatalogTests.swift; sourceTree = "<group>"; };
+		20000000000000000000000F /* CapabilityAvailabilityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapabilityAvailabilityTests.swift; sourceTree = "<group>"; };
+		200000000000000000000016 /* ExperienceOperationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceOperationTests.swift; sourceTree = "<group>"; };
+		200000000000000000000019 /* FoundationExperienceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationExperienceTests.swift; sourceTree = "<group>"; };
+		20000000000000000000001A /* FoundationStreamingToolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationStreamingToolTests.swift; sourceTree = "<group>"; };
+		20000000000000000000001B /* NaturalLanguageExperienceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaturalLanguageExperienceTests.swift; sourceTree = "<group>"; };
+		20000000000000000000001C /* TranslationExperienceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationExperienceTests.swift; sourceTree = "<group>"; };
+		200000000000000000000020 /* VisionExperienceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionExperienceTests.swift; sourceTree = "<group>"; };
+		200000000000000000000022 /* SoundAnalysisExperienceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundAnalysisExperienceTests.swift; sourceTree = "<group>"; };
+		200000000000000000000025 /* SystemExperienceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemExperienceTests.swift; sourceTree = "<group>"; };
+		200000000000000000000028 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		200000000000000000000041 /* OnDeviceModelLabTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnDeviceModelLabTests.swift; sourceTree = "<group>"; };
+		200000000000000000000042 /* OnDeviceModelLab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnDeviceModelLab.swift; sourceTree = "<group>"; };
+		200000000000000000000043 /* OnDeviceModelLabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnDeviceModelLabView.swift; sourceTree = "<group>"; };
+		200000000000000000000044 /* VisionSegmentationExperience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionSegmentationExperience.swift; sourceTree = "<group>"; };
+		200000000000000000000045 /* VisionSegmentationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionSegmentationView.swift; sourceTree = "<group>"; };
+		200000000000000000000046 /* VisionSegmentationExperienceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionSegmentationExperienceTests.swift; sourceTree = "<group>"; };
+		200000000000000000000047 /* ExperienceIndexing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceIndexing.swift; sourceTree = "<group>"; };
+		200000000000000000000048 /* ExperienceAppIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceAppIntents.swift; sourceTree = "<group>"; };
+		200000000000000000000049 /* ExperienceAppIntentsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceAppIntentsTests.swift; sourceTree = "<group>"; };
+		200000000000000000000061 /* DemoLiveActivityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoLiveActivityTests.swift; sourceTree = "<group>"; };
+		200000000000000000000062 /* DemoLiveActivityShared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoLiveActivityShared.swift; sourceTree = "<group>"; };
+		200000000000000000000063 /* DemoLiveActivityCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoLiveActivityCoordinator.swift; sourceTree = "<group>"; };
+		200000000000000000000064 /* SystemIntelligenceToAppVerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemIntelligenceToAppVerificationView.swift; sourceTree = "<group>"; };
+		200000000000000000000065 /* DemoLiveActivityWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoLiveActivityWidget.swift; sourceTree = "<group>"; };
+		200000000000000000000066 /* DemoLiveActivity.appex */ = {isa = PBXFileReference; explicitFileType = wrapper.app-extension; includeInIndex = 0; path = DemoLiveActivity.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		200000000000000000000077 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		200000000000000000000071 /* SMSIncomingClassification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSIncomingClassification.swift; sourceTree = "<group>"; };
+		200000000000000000000072 /* SMSIncomingClassificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSIncomingClassificationService.swift; sourceTree = "<group>"; };
+		200000000000000000000073 /* SMSIncomingClassificationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSIncomingClassificationTests.swift; sourceTree = "<group>"; };
+		200000000000000000000074 /* SMSIncomingClassificationServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSIncomingClassificationServiceTests.swift; sourceTree = "<group>"; };
+		200000000000000000000078 /* SMSIncomingSamplePool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSIncomingSamplePool.swift; sourceTree = "<group>"; };
+		200000000000000000000079 /* SMSIncomingSamplePoolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSIncomingSamplePoolTests.swift; sourceTree = "<group>"; };
+		200000000000000000000080 /* sms_incoming_samples.jsonl */ = {isa = PBXFileReference; lastKnownFileType = text; path = AppleOnDeviceModelDemo/Resources/sms_incoming_samples.jsonl; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		600000000000000000000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				100000000000000000000028 /* Security.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		600000000000000000000002 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		600000000000000000000007 /* Live Activity Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = ();
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		700000000000000000000001 = {
+			isa = PBXGroup;
+			children = (
+				700000000000000000000002 /* AppleOnDeviceModelDemo */,
+				700000000000000000000003 /* AppleOnDeviceModelDemoTests */,
+				700000000000000000000004 /* Products */,
+				700000000000000000000006 /* AppleOnDeviceModelDemoLiveActivity */,
+			);
+			sourceTree = "<group>";
+		};
+		700000000000000000000002 /* AppleOnDeviceModelDemo */ = {
+			isa = PBXGroup;
+			children = (
+				200000000000000000000001 /* AppleOnDeviceModelDemoApp.swift */,
+				200000000000000000000002 /* ContentView.swift */,
+				200000000000000000000004 /* SpeechInputService.swift */,
+				200000000000000000000021 /* SpeechExperience.swift */,
+				200000000000000000000023 /* SoundAnalysisExperience.swift */,
+				200000000000000000000024 /* ImageExperiences.swift */,
+				200000000000000000000005 /* FoundationModelService.swift */,
+				200000000000000000000018 /* FoundationExperiences.swift */,
+				200000000000000000000026 /* SystemExperiences.swift */,
+				200000000000000000000027 /* SampleAppIntent.swift */,
+				20000000000000000000001D /* NaturalLanguageExperience.swift */,
+				20000000000000000000001E /* TranslationExperience.swift */,
+				20000000000000000000001F /* VisionExperience.swift */,
+				20000000000000000000000C /* Experience.swift */,
+				20000000000000000000000D /* ExperienceCatalog.swift */,
+				20000000000000000000000E /* AppRoute.swift */,
+				200000000000000000000010 /* CapabilityAvailability.swift */,
+				200000000000000000000011 /* AppTheme.swift */,
+				200000000000000000000012 /* HomeView.swift */,
+				200000000000000000000013 /* CategoryView.swift */,
+				200000000000000000000014 /* SharedExperienceViews.swift */,
+				200000000000000000000015 /* ExperienceDestinationView.swift */,
+				200000000000000000000017 /* ExperienceOperation.swift */,
+				200000000000000000000042 /* OnDeviceModelLab.swift */,
+				200000000000000000000043 /* OnDeviceModelLabView.swift */,
+				200000000000000000000044 /* VisionSegmentationExperience.swift */,
+				200000000000000000000045 /* VisionSegmentationView.swift */,
+				200000000000000000000047 /* ExperienceIndexing.swift */,
+				200000000000000000000048 /* ExperienceAppIntents.swift */,
+				200000000000000000000062 /* DemoLiveActivityShared.swift */,
+				200000000000000000000063 /* DemoLiveActivityCoordinator.swift */,
+				200000000000000000000064 /* SystemIntelligenceToAppVerificationView.swift */,
+				200000000000000000000071 /* SMSIncomingClassification.swift */,
+				200000000000000000000072 /* SMSIncomingClassificationService.swift */,
+				200000000000000000000078 /* SMSIncomingSamplePool.swift */,
+			);
+			path = AppleOnDeviceModelDemo;
+			sourceTree = "<group>";
+		};
+		700000000000000000000003 /* AppleOnDeviceModelDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				200000000000000000000006 /* FoundationModelServiceTests.swift */,
+				200000000000000000000009 /* SpeechTranscriptAccumulatorTests.swift */,
+				20000000000000000000000B /* ExperienceCatalogTests.swift */,
+				20000000000000000000000F /* CapabilityAvailabilityTests.swift */,
+				200000000000000000000016 /* ExperienceOperationTests.swift */,
+				200000000000000000000019 /* FoundationExperienceTests.swift */,
+				20000000000000000000001A /* FoundationStreamingToolTests.swift */,
+				20000000000000000000001B /* NaturalLanguageExperienceTests.swift */,
+				20000000000000000000001C /* TranslationExperienceTests.swift */,
+				200000000000000000000020 /* VisionExperienceTests.swift */,
+				200000000000000000000022 /* SoundAnalysisExperienceTests.swift */,
+				200000000000000000000025 /* SystemExperienceTests.swift */,
+				200000000000000000000041 /* OnDeviceModelLabTests.swift */,
+				200000000000000000000046 /* VisionSegmentationExperienceTests.swift */,
+				200000000000000000000049 /* ExperienceAppIntentsTests.swift */,
+				200000000000000000000061 /* DemoLiveActivityTests.swift */,
+				200000000000000000000073 /* SMSIncomingClassificationTests.swift */,
+				200000000000000000000074 /* SMSIncomingClassificationServiceTests.swift */,
+				200000000000000000000079 /* SMSIncomingSamplePoolTests.swift */,
+				700000000000000000000005 /* Resources */,
+			);
+			path = AppleOnDeviceModelDemoTests;
+			sourceTree = "<group>";
+		};
+		700000000000000000000004 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				200000000000000000000007 /* AppleOnDeviceModelDemo.app */,
+				200000000000000000000008 /* AppleOnDeviceModelDemoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		700000000000000000000005 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				200000000000000000000080 /* sms_incoming_samples.jsonl */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		700000000000000000000006 /* AppleOnDeviceModelDemoLiveActivity */ = {
+			isa = PBXGroup;
+			children = (200000000000000000000065 /* DemoLiveActivityWidget.swift */, 200000000000000000000077 /* Info.plist */);
+			path = AppleOnDeviceModelDemoLiveActivity;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		500000000000000000000001 /* AppleOnDeviceModelDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 800000000000000000000001 /* Build configuration list for PBXNativeTarget "AppleOnDeviceModelDemo" */;
+			buildPhases = (
+				600000000000000000000003 /* Sources */,
+				600000000000000000000001 /* Frameworks */,
+				600000000000000000000005 /* Resources */,
+				600000000000000000000010 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				900000000000000000000002 /* Live Activity target dependency */,
+			);
+			name = AppleOnDeviceModelDemo;
+			productName = AppleOnDeviceModelDemo;
+			productReference = 200000000000000000000007 /* AppleOnDeviceModelDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		500000000000000000000002 /* AppleOnDeviceModelDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 800000000000000000000002 /* Build configuration list for PBXNativeTarget "AppleOnDeviceModelDemoTests" */;
+			buildPhases = (
+				600000000000000000000004 /* Sources */,
+				600000000000000000000002 /* Frameworks */,
+				600000000000000000000006 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				900000000000000000000001 /* PBXTargetDependency */,
+			);
+			name = AppleOnDeviceModelDemoTests;
+			productName = AppleOnDeviceModelDemoTests;
+			productReference = 200000000000000000000008 /* AppleOnDeviceModelDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		500000000000000000000003 /* AppleOnDeviceModelDemoLiveActivity */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 800000000000000000000004 /* Build configuration list for PBXNativeTarget "AppleOnDeviceModelDemoLiveActivity" */;
+			buildPhases = (600000000000000000000008 /* Sources */, 600000000000000000000007 /* Live Activity Frameworks */, 600000000000000000000009 /* Resources */);
+			buildRules = ();
+			dependencies = ();
+			name = AppleOnDeviceModelDemoLiveActivity;
+			productName = AppleOnDeviceModelDemoLiveActivity;
+			productReference = 200000000000000000000066 /* DemoLiveActivity.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		400000000000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2660;
+				LastUpgradeCheck = 2660;
+				TargetAttributes = {
+					500000000000000000000001 = {
+						CreatedOnToolsVersion = 26.6;
+					};
+				500000000000000000000002 = {
+						CreatedOnToolsVersion = 26.6;
+						TestTargetID = 500000000000000000000001;
+					};
+				};
+				500000000000000000000003 = { CreatedOnToolsVersion = 26.6; };
+			};
+			buildConfigurationList = 800000000000000000000003 /* Build configuration list for PBXProject "AppleOnDeviceModelDemo" */;
+			compatibilityVersion = "Xcode 16.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 700000000000000000000001;
+			productRefGroup = 700000000000000000000004 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				500000000000000000000001 /* AppleOnDeviceModelDemo */,
+				500000000000000000000002 /* AppleOnDeviceModelDemoTests */,
+				500000000000000000000003 /* AppleOnDeviceModelDemoLiveActivity */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		600000000000000000000005 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				100000000000000000000080 /* sms_incoming_samples.jsonl in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		600000000000000000000006 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				100000000000000000000081 /* sms_incoming_samples.jsonl in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		600000000000000000000009 /* Live Activity Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = ();
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		600000000000000000000003 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				100000000000000000000001 /* AppleOnDeviceModelDemoApp.swift in Sources */,
+				100000000000000000000002 /* ContentView.swift in Sources */,
+				100000000000000000000004 /* SpeechInputService.swift in Sources */,
+				100000000000000000000021 /* SpeechExperience.swift in Sources */,
+				100000000000000000000023 /* SoundAnalysisExperience.swift in Sources */,
+				100000000000000000000024 /* ImageExperiences.swift in Sources */,
+				100000000000000000000026 /* SystemExperiences.swift in Sources */,
+				100000000000000000000027 /* SampleAppIntent.swift in Sources */,
+				100000000000000000000005 /* FoundationModelService.swift in Sources */,
+				100000000000000000000018 /* FoundationExperiences.swift in Sources */,
+				10000000000000000000001D /* NaturalLanguageExperience.swift in Sources */,
+				10000000000000000000001E /* TranslationExperience.swift in Sources */,
+				10000000000000000000001F /* VisionExperience.swift in Sources */,
+				10000000000000000000000A /* Experience.swift in Sources */,
+				10000000000000000000000B /* ExperienceCatalog.swift in Sources */,
+				10000000000000000000000C /* AppRoute.swift in Sources */,
+				10000000000000000000000E /* CapabilityAvailability.swift in Sources */,
+				100000000000000000000011 /* AppTheme.swift in Sources */,
+				100000000000000000000012 /* HomeView.swift in Sources */,
+				100000000000000000000013 /* CategoryView.swift in Sources */,
+				100000000000000000000014 /* SharedExperienceViews.swift in Sources */,
+				100000000000000000000015 /* ExperienceDestinationView.swift in Sources */,
+				100000000000000000000016 /* ExperienceOperation.swift in Sources */,
+				100000000000000000000042 /* OnDeviceModelLab.swift in Sources */,
+				100000000000000000000043 /* OnDeviceModelLabView.swift in Sources */,
+				100000000000000000000044 /* VisionSegmentationExperience.swift in Sources */,
+				100000000000000000000045 /* VisionSegmentationView.swift in Sources */,
+				100000000000000000000047 /* ExperienceIndexing.swift in Sources */,
+				100000000000000000000048 /* ExperienceAppIntents.swift in Sources */,
+				100000000000000000000062 /* DemoLiveActivityShared.swift in Sources */,
+				100000000000000000000063 /* DemoLiveActivityCoordinator.swift in Sources */,
+				100000000000000000000064 /* SystemIntelligenceToAppVerificationView.swift in Sources */,
+				100000000000000000000071 /* SMSIncomingClassification.swift in Sources */,
+				100000000000000000000072 /* SMSIncomingClassificationService.swift in Sources */,
+				100000000000000000000078 /* SMSIncomingSamplePool.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		600000000000000000000004 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				100000000000000000000006 /* FoundationModelServiceTests.swift in Sources */,
+				100000000000000000000007 /* SpeechTranscriptAccumulatorTests.swift in Sources */,
+				100000000000000000000009 /* ExperienceCatalogTests.swift in Sources */,
+				10000000000000000000000D /* CapabilityAvailabilityTests.swift in Sources */,
+				100000000000000000000017 /* ExperienceOperationTests.swift in Sources */,
+				100000000000000000000019 /* FoundationExperienceTests.swift in Sources */,
+				10000000000000000000001A /* FoundationStreamingToolTests.swift in Sources */,
+				10000000000000000000001B /* NaturalLanguageExperienceTests.swift in Sources */,
+				10000000000000000000001C /* TranslationExperienceTests.swift in Sources */,
+				100000000000000000000020 /* VisionExperienceTests.swift in Sources */,
+				100000000000000000000022 /* SoundAnalysisExperienceTests.swift in Sources */,
+				100000000000000000000025 /* SystemExperienceTests.swift in Sources */,
+				100000000000000000000041 /* OnDeviceModelLabTests.swift in Sources */,
+				100000000000000000000046 /* VisionSegmentationExperienceTests.swift in Sources */,
+				100000000000000000000049 /* ExperienceAppIntentsTests.swift in Sources */,
+				100000000000000000000061 /* DemoLiveActivityTests.swift in Sources */,
+				100000000000000000000073 /* SMSIncomingClassificationTests.swift in Sources */,
+				100000000000000000000074 /* SMSIncomingClassificationServiceTests.swift in Sources */,
+				100000000000000000000079 /* SMSIncomingSamplePoolTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		600000000000000000000008 /* Live Activity Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (100000000000000000000075 /* DemoLiveActivityWidget.swift in Sources */, 100000000000000000000076 /* DemoLiveActivityShared.swift in Sources */);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		600000000000000000000010 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (100000000000000000000067 /* DemoLiveActivity.appex in Embed Foundation Extensions */);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		900000000000000000000001 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 500000000000000000000001 /* AppleOnDeviceModelDemo */;
+			targetProxy = 300000000000000000000001 /* PBXContainerItemProxy */;
+		};
+		900000000000000000000002 /* Live Activity target dependency */ = {
+			isa = PBXTargetDependency;
+			target = 500000000000000000000003 /* AppleOnDeviceModelDemoLiveActivity */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		A00000000000000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		A00000000000000000000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 6.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A00000000000000000000003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DH255M46VJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This demo uses the microphone for on-device speech transcription and sound recognition.";
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.AppleOnDeviceModelDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		A00000000000000000000004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DH255M46VJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This demo uses the microphone for on-device speech transcription and sound recognition.";
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.AppleOnDeviceModelDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		A00000000000000000000005 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DH255M46VJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.AppleOnDeviceModelDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AppleOnDeviceModelDemo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AppleOnDeviceModelDemo";
+			};
+			name = Debug;
+		};
+		A00000000000000000000006 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DH255M46VJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.AppleOnDeviceModelDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AppleOnDeviceModelDemo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AppleOnDeviceModelDemo";
+			};
+			name = Release;
+		};
+		A00000000000000000000007 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DH255M46VJ;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = AppleOnDeviceModelDemoLiveActivity/Info.plist;
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.AppleOnDeviceModelDemo.LiveActivity;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = iphoneos;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		A00000000000000000000008 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DH255M46VJ;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = AppleOnDeviceModelDemoLiveActivity/Info.plist;
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.AppleOnDeviceModelDemo.LiveActivity;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = iphoneos;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		800000000000000000000001 /* Build configuration list for PBXNativeTarget "AppleOnDeviceModelDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A00000000000000000000003 /* Debug */,
+				A00000000000000000000004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		800000000000000000000002 /* Build configuration list for PBXNativeTarget "AppleOnDeviceModelDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A00000000000000000000005 /* Debug */,
+				A00000000000000000000006 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		800000000000000000000003 /* Build configuration list for PBXProject "AppleOnDeviceModelDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A00000000000000000000001 /* Debug */,
+				A00000000000000000000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		800000000000000000000004 /* Build configuration list for PBXNativeTarget "AppleOnDeviceModelDemoLiveActivity" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A00000000000000000000007 /* Debug */,
+				A00000000000000000000008 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 400000000000000000000001 /* Project object */;
+}

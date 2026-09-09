@@ -1,0 +1,39 @@
+[FoundationModels]
+DEVICE_RESULT|TAG-AVAILABILITY|unavailable(FoundationModels.SystemLanguageModel.Availability.UnavailableReason.appleIntelligenceNotEnabled)
+DEVICE_RESULT|FM-05|BLOCKED_SYSTEM|unavailable(FoundationModels.SystemLanguageModel.Availability.UnavailableReason.appleIntelligenceNotEnabled)
+DEVICE_RESULT|FM-AVAILABILITY|unavailable(FoundationModels.SystemLanguageModel.Availability.UnavailableReason.appleIntelligenceNotEnabled)
+DEVICE_RESULT|FM-01|BLOCKED_SYSTEM|unavailable(FoundationModels.SystemLanguageModel.Availability.UnavailableReason.appleIntelligenceNotEnabled)
+
+[NaturalLanguage]
+DEVICE_RESULT|LANG-06|PASS|language=English|tokens=7|entities=7|sentiment=Negative
+
+[Vision]
+DEVICE_RESULT|VISION-02|PASS|HELLO 26
+
+[Translation]
+DEVICE_RESULT|LANG-01|BLOCKED_SYSTEM|supported
+
+[ImageCreator]
+DEVICE_RESULT|SYS-01|BLOCKED_SYSTEM|Image Playground is not supported on this device.
+
+[Speech]
+DEVICE_RESULT|AUDIO-READY|Start acoustic phrase now
+[SpeechInput] Using locale: en_US
+[SpeechInput] Input node format before check: ch=1, rate=48000.0
+[SpeechInput] Converting buffer: inRate=48000.0, outRate=16000.0, inFrames=4800, outCapacity=1601
+[SpeechInput] Stopping transcription
+[SpeechInput] Transcription stopped and audio session deactivated
+DEVICE_RESULT|AUDIO-03|FAIL_APP|No transcript returned
+
+[SoundAnalysis]
+DEVICE_RESULT|SOUND-PARTIAL|speech|0.19911201298236847
+DEVICE_RESULT|SOUND-PARTIAL|music|0.23607462644577026
+DEVICE_RESULT|AUDIO-08|PASS|door|0.3303806185722351
+
+[Source logs]
+/tmp/apple-experiences-physical-tests2.log
+/tmp/apple-physical-foundation-diagnostics.log
+/tmp/apple-physical-native-diagnostics.log
+/tmp/apple-physical-system-diagnostics.log
+/tmp/apple-physical-speech-runtime.log
+/tmp/apple-physical-sound-runtime.log
