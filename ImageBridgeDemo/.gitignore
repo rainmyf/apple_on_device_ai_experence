@@ -1,0 +1,17 @@
+.DS_Store
+**/build/
+**/.hvigor/
+**/oh_modules/
+**/signing/
+**/local.properties
+**/xcuserdata/
+**/device-signing/
+**/*.log
+/evidence/
+**/*.p12
+**/*.p7b
+**/*.cer
+**/*.hap
+**/*.shortcut
+!**/*.unsigned.shortcut
+/iOS/device-apps.json

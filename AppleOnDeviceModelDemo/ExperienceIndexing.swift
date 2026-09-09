@@ -57,16 +57,14 @@ struct ExperienceEntity: IndexedEntity, Hashable, Sendable {
         return attributes
     }
 
-    var hideInSpotlight: Bool {
-        experienceID == .smsClassification
-    }
+    var hideInSpotlight: Bool { false }
 }
 
 @available(iOS 27.0, *)
 struct ExperienceEntityQuery: EntityStringQuery {
     func entities(for identifiers: [ExperienceEntity.ID]) async throws -> [ExperienceEntity] {
         identifiers.compactMap { identifier in
-            guard let id = ExperienceID(rawValue: identifier), id != .smsClassification else { return nil }
+            guard let id = ExperienceID(rawValue: identifier) else { return nil }
             return ExperienceCatalog.all.first { $0.id == id }.map(ExperienceEntity.init(definition:))
         }
     }
@@ -92,9 +90,7 @@ enum ExperienceIndexing {
     static let domainIdentifier = "com.example.AppleOnDeviceModelDemo.experiences"
     static let identifierPrefix = "experience:"
 
-    static let visibleDefinitions: [ExperienceDefinition] = ExperienceCatalog.all.filter {
-        $0.id != .smsClassification
-    }
+    static let visibleDefinitions: [ExperienceDefinition] = ExperienceCatalog.all
 
     static let visibleEntities: [ExperienceEntity] = visibleDefinitions.map(ExperienceEntity.init(definition:))
 

@@ -13,8 +13,7 @@ struct AppleOnDeviceModelDemoApp: App {
                     guard
                         let identifier = activity.userInfo?[CSSearchableItemActivityIdentifier] as? String,
                         let entityID = ExperienceIndexing.entityID(from: identifier),
-                        let experienceID = ExperienceID(rawValue: entityID),
-                        experienceID != .smsClassification
+                        let experienceID = ExperienceID(rawValue: entityID)
                     else { return }
 
                     navigation.open(experience: experienceID)
@@ -25,6 +24,14 @@ struct AppleOnDeviceModelDemoApp: App {
                     } catch {
                         // Spotlight is an optional system entry point; the app remains
                         // usable when indexing is unavailable or interrupted.
+                    }
+                }
+                .onOpenURL { url in
+                    guard url.scheme == "appleondevicemodeldemo",
+                          url.host == "demo-live-activity"
+                    else { return }
+                    Task {
+                        await DemoLiveActivityCoordinator.shared.endActive()
                     }
                 }
         }

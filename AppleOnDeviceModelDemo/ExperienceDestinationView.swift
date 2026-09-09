@@ -13,8 +13,6 @@ struct ExperienceDestinationView: View {
                 GuidedGenerationExperienceView()
             case .contentTagging:
                 ContentTaggingExperienceView()
-            case .smsClassification:
-                SMSClassificationExperienceView()
             case .naturalLanguage:
                 NaturalLanguageExperienceView()
             case .translation:

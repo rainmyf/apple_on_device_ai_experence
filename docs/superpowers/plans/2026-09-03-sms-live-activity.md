@@ -20,12 +20,56 @@
 - Model errors, missing Shortcut Input, invalid categories, and unavailable model status normalize to `ordinary` with summary `收到一条短信`; preserve a non-user-facing fallback reason for evidence.
 - Maintain one ongoing activity and update it for later messages; tapping it opens the app and ends it. “Long-lived” is bounded by ActivityKit/system limits and authorization.
 
+## Real Foundation Model Gate Before Live SMS Testing
+
+The following fixtures are mandatory real-model inputs before any live SMS automation is attempted. `SMSIncomingClassificationService()` must call the physical device’s `SystemLanguageModel.default`; a deterministic recording activity manager may be used only to verify orchestration around the real classification result. A fake classifier is not an acceptance substitute.
+
+| ID | Category | Expected activity payload |
+| --- | --- | --- |
+| `delivery-fengchao` | `delivery` | `取件码=85692800`; `取件地点=荣星东苑2幢与4幢东边丰巢柜1号柜` |
+| `delivery-jd` | `delivery` | `取件码=8-3-6317`; `取件地点=铭城国际铭城便利店` |
+| `train-beijing-shanghai` | `train_waitlist_success` | `北京南站→上海虹桥站`; `9月30日 09:20`; `10车2C、2F` |
+| `train-changsha-xian` | `train_waitlist_success` | `长沙南站→西安北站`; `6月21日 14:05`; `12车6F` |
+| `bank-citic` | `bank_repayment` | `银行=中信信用卡`; `欠款金额=2692.05元`; `最后还款日=06月29日` |
+| `bank-minsheng` | `bank_repayment` | `银行=民生银行`; `欠款金额` 为空且不编造；`最后还款日=2025年01月16日17:00` |
+| `ordinary-pinduoduo` | `ordinary` | 只显示一句中文摘要，不显示其他四类字段 |
+| `weather-spb-wind-12` | `weather_alert` | `圣彼得堡8月12日预计风力达18米/秒，请注意安全` |
+| `weather-spb-rain-19` | `weather_alert` | `圣彼得堡8月19日预计有强降雨，请注意安全` |
+| `weather-spb-wind-19` | `weather_alert` | `圣彼得堡8月19日预计风力达18米/秒，请注意安全` |
+| `weather-spb-rain-wind-23` | `weather_alert` | `圣彼得堡8月23日预计大雨、阵风达20米/秒，请注意安全` |
+
+The Russian weather strings are taken from the supplied screenshot. The real-model gate proves actual multilingual classification and extraction; deterministic doubles remain limited to wiring tests.
+
+### Exact Fixture Bodies
+
+The implementation must store these exact bodies in the test fixture table; do not paraphrase or repair punctuation in the fixture input. The real-model test must send the body unchanged to the classifier.
+
+```text
+delivery-fengchao = 【丰巢】凭取件码85692800至荣星东苑2幢与4幢东边丰巢柜1号柜取件。快递员及畅存规则p.fcbox.com/vRACa
+delivery-jd = 【京东配送】请凭8-3-6317到铭城国际铭城便利店领取运单尾号4211包裹，详询13484902114
+train-beijing-shanghai = 【12306】候补订单已兑现成功，EH87720208，9月30日G117次10车2C、2F,北京南站（09:20开）至上海虹桥站，检票口9A、9B。12306.cn/g
+train-changsha-xian = 【12306】候补订单已兑现成功，EG97299714,6月21日G842次12车6F，长沙南站（14:05开）至西安北站，检票口A5。请查收差价38.0元。(12306.cn/g)
+bank-citic = 中信信用卡】您尾号3711的Huawei Card本期账单人民币2692.05元，还款到期06月29日。06月28日前回FQ+卡末四位可申请将2557.45元分6期还（您的信用卡额度会根据账单分期业务的办理结果而发生变化，具体请以您的实际额度展示为准），每期应还436.46元（含手续费10.22元），申请成功后本期仅需还人民币134.60元，最终以审批结果为准。
+bank-minsheng = 【民生银行】尊敬的客户，您本期账单最后还款日已延期至2025年01月16日17:00前。请将本期账单应还款金额还入至您的信用卡账户中，如有外币账单请于宽限期内及时购汇，如有多个账户需分别还款。部分还款渠道非实时到账，建议您通过本行渠道实时还款，避免造成逾期。
+ordinary-pinduoduo = 拼多多】请确认：2391亲，恭喜您被西安市选中有机会免单得华为P30！次日作废，请及时查收 y4n.cn/QZbRmdN 回TD退
+weather-spb-wind-12 = Ветер до 18 м/с прогнозируется в Санкт-Петербурге 12 августа. Будьте внимательны и осторожны! Телефон вызова экстренных служб 112.
+weather-spb-rain-19 = Сильный дождь, местами очень сильный прогнозируется в Санкт-Петербурге 19 августа. Телефон вызова экстренных служб 112.
+weather-spb-wind-19 = Ветер до 18 м/с прогнозируется в Санкт-Петербурге 19 августа. Будьте внимательны и осторожны! Телефон вызова экстренных служб 112.
+weather-spb-rain-wind-23 = Дожди, местами сильные, порывы ветра до 20 м/с прогнозируются в Санкт-Петербурге 23 августа. Телефон вызова экстренных служб 112.
+```
+
+### Real-Model Gate Requirement
+
+Tasks 1–5 are not complete until all fixture IDs have been sent through the real Foundation Model on the connected iPhone and pass exact category assertions plus required-field assertions. If the model is unavailable, the test must fail with an explicit availability result; it must not be skipped or replaced with a fake result. Only after this gate passes may Task 6 configure Shortcuts and send live messages.
+
 ### Task 1: Add the five-category domain model and RED contract tests
 
 **Files:**
 - Create: `AppleOnDeviceModelDemo/SMSIncomingClassification.swift`
 - Create: `AppleOnDeviceModelDemoTests/SMSIncomingClassificationTests.swift`
-- Modify: `AppleOnDeviceModelDemo.xcodeproj/project.pbxproj` to add both files to their existing targets
+- Create: `AppleOnDeviceModelDemoTests/Resources/sms_live_activity_real_fixtures.jsonl`
+- Create: `AppleOnDeviceModelDemoTests/SMSIncomingRealModelDeviceTests.swift`
+- Modify: `AppleOnDeviceModelDemo.xcodeproj/project.pbxproj` to add the Swift files to the test target and the JSONL resource to the test resources phase
 
 **Interfaces:**
 - `enum SMSIncomingCategory: String, CaseIterable, Codable, Hashable, Sendable` with raw IDs `delivery`, `bank_repayment`, `train_waitlist_success`, `weather_alert`, and `ordinary`.
@@ -55,6 +99,8 @@
 - [ ] **Step 4: Run the same test selection on the connected iPhone and confirm PASS.**
 - [ ] **Step 5: Commit** `test: define incoming SMS classification contract`.
 
+The real-model fixture test must include the exact message bodies supplied by the user, including the malformed leading bracket in the CITIC sample and the four Russian weather samples from the screenshot. Test fixtures are identified by stable IDs rather than inferred from sender text.
+
 ### Task 2: Implement the language-agnostic Foundation Model classifier
 
 **Files:**
@@ -69,13 +115,32 @@
 - `@MainActor final class SMSIncomingClassificationService: SMSIncomingClassifying` with `init(model: SystemLanguageModel = .default, sessionFactory: @escaping SMSIncomingSessionFactory)` and `func classify(_ text: String) async throws -> SMSIncomingClassification`; the default factory creates a `LanguageModelSession` adapter.
 - `SMSIncomingClassificationPrompt.make(text:)` explicitly says the SMS may be Chinese, English, Russian, or another language; choose exactly one ID; emit only relevant fields; do not infer missing values; write summaries in concise Chinese.
 
-- [ ] **Step 1: Write failing tests** with a fake session that records the prompt and returns generated content. Assert the prompt contains all five IDs, the language rule, no-cloud rule, and the field rules; assert the adapter maps generated output into `SMSIncomingClassification`.
+The production prompt must preserve this decision order and wording intent (the implementer may only adjust formatting, not category semantics):
+
+```text
+你是短信分类器。短信可能是中文、英文、俄文或其他语言。请先理解原文，再严格选择一个 category：
+delivery = 已有包裹/运单，需要取件码或取件地点；
+bank_repayment = 银行或信用卡账单、欠款、最后还款日或还款提醒；
+train_waitlist_success = 明确出现候补订单已兑现/候补成功，并包含铁路行程；
+weather_alert = 极端天气、强风、暴雨、预警、危险提示或应急建议；
+ordinary = 不满足以上条件的所有短信，包括营销、抽奖、验证码、聊天和普通通知。
+天气判断要理解俄文风力/降雨表达，不能因为不是中文而归为 ordinary。
+只输出 schema 字段；category 必须是允许值之一。只填写当前 category 的相关字段，找不到就留空，禁止猜测。
+所有摘要用简洁中文。不得调用网络、云端模型或第三方服务。
+原始短信：<SMS>
+```
+
+Category classification and detail extraction are two sequential real-model calls in one intent execution: the first response contains only the constrained category; the second prompt includes the chosen category and requests only its allowed fields. This prevents a second generation from changing the category after it has been accepted.
+
+- [ ] **Step 1: Write failing prompt-contract tests** with a fake session that records the prompt and returns generated content. Assert the prompt contains all five IDs, the language rule, no-cloud rule, category definitions, the Russian-weather interpretation rule, and the field rules; assert the adapter maps generated output into `SMSIncomingClassification`.
 - [ ] **Step 2: Add tests** for empty input, the existing `SystemLanguageModel.default.availability` gate, malformed generated content, and cancellation; assert no model call occurs when unavailable or empty.
-- [ ] **Step 3: Run the tests on the connected iPhone and confirm RED.**
+- [ ] **Step 3: Run the contract tests on the connected iPhone and confirm RED.**
 - [ ] **Step 4: Implement the `@Generable` schema and adapter using the current iOS 27 SDK’s real `LanguageModelSession.respond(to:generating:)` signature.** Construct the session per intent invocation; do not add streaming or network code.
 - [ ] **Step 5: Normalize the adapter result through `SMSIncomingPresentation.normalized(_:)` and map all thrown errors to the caller; the intent owns fallback policy.
-- [ ] **Step 6: Run the service tests on the connected iPhone and confirm PASS.**
-- [ ] **Step 7: Commit** `feat: classify incoming SMS with Foundation Model`.
+- [ ] **Step 6: Run the service contract tests on the connected iPhone and confirm PASS.**
+- [ ] **Step 7: Run `SMSIncomingRealModelDeviceTests` against the connected iPhone with `SMSIncomingClassificationService()` and no fake session. Assert each fixture’s exact category and required fields; print one JSON evidence row per fixture containing input ID, extracted fields, latency, and availability. Do not accept a skipped test.
+- [ ] **Step 8: Tune only the category Prompt, schema guides, and deterministic validator when a fixture fails; rerun the entire 11-row real-model suite after every change.
+- [ ] **Step 9: Commit** `test: add real-device SMS classification fixtures`.
 
 ### Task 3: Add the shared ActivityKit state and coordinator
 
@@ -121,6 +186,8 @@
 - [ ] **Step 6: Add `.onOpenURL` handling in `AppleOnDeviceModelDemoApp` for `appleondevicemodeldemo://sms-live-activity`, calling `endActive()` and retaining the latest result in app state.
 - [ ] **Step 7: Run the AppIntent tests on the connected iPhone and confirm PASS.**
 - [ ] **Step 8: Commit** `feat: trigger SMS classification from LiveActivityIntent`.
+
+- [ ] **Deterministic orchestration check:** Keep a table-driven test over all 11 fixture IDs with a fake classifier and recording activity manager to prove each result causes one `startAnalyzing` and one `update`, renders only allowed fields, and leaves no full SMS body in the activity payload. This test checks wiring only; the real-model gate in Task 2 is the acceptance gate.
 
 ### Task 5: Add the WidgetKit Live Activity extension and app capabilities
 

@@ -9,7 +9,6 @@ struct ExperienceCatalogTests {
             .foundationModel: ("iOS 26.0", "SystemLanguageModel.default", true, .active),
             .guidedGeneration: ("iOS 26.0", "LanguageModelSession.respond(to:)", true, .active),
             .contentTagging: ("iOS 26.0", "Generable", true, .active),
-            .smsClassification: ("iOS 26.0", "LanguageModelSession.respond(to:)", true, .active),
             .streaming: ("iOS 26.0", "LanguageModelSession.streamResponse(to:)", true, .active),
             .toolCalling: ("iOS 26.0", "LanguageModelSession.Tool", true, .active),
             .translation: ("iOS 26.0", "TranslationSession", true, .active),
@@ -48,28 +47,15 @@ struct ExperienceCatalogTests {
         ])
         #expect(HomeDirectionContent.entries.map(\.title) == [
             "App → On-device model",
-            "System intelligence → App",
+            "系统智能调用 App",
         ])
         #expect(HomeDirectoryContent.sections.map(\.category) == ExperienceCategory.allCases)
-        #expect(HomeDirectoryContent.sections.flatMap(\.itemIDs).contains(.smsClassification) == false)
     }
 
     @Test func visibleExperienceCardsExposeTheirMinimumOSVersionBadge() {
         let presentation = ExperienceGridCardPresentation(experience: ExperienceCatalog[.imageCreator])
 
         #expect(presentation.versionBadge == "iOS 26.4")
-    }
-
-    @Test func smsClassificationIsHiddenFromExperienceListsButStillResolvesToItsDestination() {
-        let item = ExperienceCatalog[.smsClassification]
-
-        #expect(item.title == "SMS Classification")
-        #expect(item.category == .languageText)
-        #expect(item.requirement == .appleIntelligence)
-        #expect(!AppRouteResolver.items(in: .languageText).map(\.id).contains(.smsClassification))
-        #expect(!AppRouteResolver.featuredItems.map(\.id).contains(.smsClassification))
-        #expect(AppRouteResolver.destinationKind(for: .experience(.smsClassification)) == .experience(.smsClassification))
-        #expect(ExperienceCatalog.pageContract(for: .smsClassification).destination == .experience(.smsClassification))
     }
 
     @Test func everyExperienceHasOneDestinationMetadataAndActionBoundary() {
@@ -124,7 +110,7 @@ struct ExperienceCatalogTests {
     @Test func homeDirectoryListsEveryVisibleExperienceExactlyOnceUnderItsCategory() {
         let sections = HomeDirectoryContent.sections
         let listedIDs = sections.flatMap(\.itemIDs)
-        let expectedIDs = Set(ExperienceID.allCases).subtracting([.smsClassification])
+        let expectedIDs = Set(ExperienceID.allCases)
 
         #expect(sections.map(\.category) == ExperienceCategory.allCases)
         #expect(listedIDs.count == expectedIDs.count)
@@ -222,7 +208,7 @@ struct ExperienceCatalogTests {
     @Test func containsEveryApprovedExperienceExactlyOnce() {
         let ids = ExperienceCatalog.all.map(\.id)
 
-        #expect(ids.count == 18)
+        #expect(ids.count == 17)
         #expect(Set(ids).count == ids.count)
         #expect(Set(ids) == Set(ExperienceID.allCases))
     }
@@ -232,7 +218,6 @@ struct ExperienceCatalogTests {
             .foundationModel: .languageText,
             .guidedGeneration: .languageText,
             .contentTagging: .languageText,
-            .smsClassification: .languageText,
             .streaming: .languageText,
             .toolCalling: .languageText,
             .translation: .languageText,
@@ -265,7 +250,6 @@ struct ExperienceCatalogTests {
             .foundationModel: .appleIntelligence,
             .guidedGeneration: .appleIntelligence,
             .contentTagging: .appleIntelligence,
-            .smsClassification: .appleIntelligence,
             .streaming: .appleIntelligence,
             .toolCalling: .appleIntelligence,
             .translation: .languageAssets,
@@ -299,8 +283,8 @@ struct ExperienceCatalogTests {
         let categoryRoutes = ExperienceCategory.allCases.map(AppRoute.category)
         let allRoutes = experienceRoutes + categoryRoutes
 
-        #expect(Set(allRoutes).count == 22)
-        #expect(Set(experienceRoutes).count == 18)
+        #expect(Set(allRoutes).count == 21)
+        #expect(Set(experienceRoutes).count == 17)
         #expect(Set(categoryRoutes).count == 4)
 
         for definition in ExperienceCatalog.all {
@@ -317,9 +301,9 @@ struct ExperienceCatalogTests {
         let homeItems = ExperienceCatalog.all
         let languageItems = homeItems.filter { $0.category == .languageText }
 
-        #expect(homeItems.count == 18)
+        #expect(homeItems.count == 17)
         #expect(languageItems.map(\.id) == [
-            .foundationModel, .guidedGeneration, .contentTagging, .smsClassification, .streaming,
+            .foundationModel, .guidedGeneration, .contentTagging, .streaming,
             .toolCalling, .translation, .naturalLanguage
         ])
         #expect(AppRoute.category(.languageText) != AppRoute.experience(.contentTagging))

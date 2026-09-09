@@ -54,6 +54,8 @@ struct RunOnDeviceModelIntent: AppIntent, LiveActivityIntent {
 
 新增 `SMSIncomingCategory` 和 `SMSIncomingClassificationResult`。结果 schema 用 `@Generable`，分类字段用 `.anyOf` 限定五个稳定 ID；类别专属字段用可选字符串，模型提示词要求只填当前类别相关字段、缺失即空值、不猜测。分类器通过 `LanguageModelSession` 和 `SystemLanguageModel.default`，不提供第三方或云端 fallback。
 
+生产 Prompt 必须明确以下判断：快递看取件码/地点；银行还款看账单、欠款和最后还款日；火车类别必须出现“候补兑现成功/候补成功”及铁路行程；天气类别必须理解中文、英文和俄文的强风/暴雨/危险提示；其余营销、抽奖、验证码、聊天和普通通知归为普通短信。分类和字段提取使用同一次 Intent 中的两个顺序模型调用，第二次只接受第一阶段选定类别的字段。
+
 ### 实况活动
 
 共享类型 `SMSLiveActivityAttributes` 只包含 Codable/Hashable/Sendable 数据：活动 ID、阶段、分类、中文标题、中文摘要、类别字段、时间戳、`source`（`model`/`fallback`）。Widget Extension 根据分类映射 SF Symbol、颜色和字段布局；任何完整短信正文都不写入 Activity 状态，避免锁屏泄露和 4KB 更新限制。
@@ -74,3 +76,23 @@ struct RunOnDeviceModelIntent: AppIntent, LiveActivityIntent {
 只接受连接的 iOS 27 真机证据：设备型号/iOS/Xcode/App commit、快捷指令配置、活动授权状态、模型 availability、输入语言、模型分类、字段、活动出现位置、耗时、fallback 原因和点击结束结果。禁止以 Simulator 构建或测试替代真机链路证据。
 
 官方边界参考：[LiveActivityIntent](https://developer.apple.com/documentation/AppIntents/LiveActivityIntent?changes=latest_b_3&language=objc)、[Displaying live data with Live Activities](https://developer.apple.com/documentation/activitykit/displaying-live-data-with-live-activities?changes=_2)、[Shortcuts communication triggers](https://support.apple.com/guide/shortcuts/communication-triggers-apdd711f9dff/ios)。
+
+## 真实模型验证样本
+
+这 11 条样本必须进入真实的 `SystemLanguageModel.default`，在连接的 iOS 27 真机上完成分类和字段提取。固定替身只用于验证 Intent 调用顺序、ActivityKit 错误处理和 Widget 纯渲染映射，不得替代真实模型验收。
+
+| Fixture | 输入特征 | 期望分类 | 期望关键信息 |
+| --- | --- | --- | --- |
+| delivery-fengchao | 丰巢取件码 85692800、荣星东苑柜 1 号柜 | `delivery` | 取件码 `85692800`；地点 `荣星东苑2幢与4幢东边丰巢柜1号柜` |
+| delivery-jd | 京东取件码 8-3-6317、铭城便利店 | `delivery` | 取件码 `8-3-6317`；地点 `铭城国际铭城便利店` |
+| train-beijing-shanghai | 12306 候补兑现、G117 | `train_waitlist_success` | 北京南站 → 上海虹桥站；9月30日 09:20；10车2C、2F |
+| train-changsha-xian | 12306 候补兑现、G842 | `train_waitlist_success` | 长沙南站 → 西安北站；6月21日 14:05；12车6F |
+| bank-citic | 中信信用卡、2692.05 元、06月29日 | `bank_repayment` | 中信信用卡；2692.05元；06月29日 |
+| bank-minsheng | 民生银行、延期至 2025-01-16 17:00 | `bank_repayment` | 民生银行；金额缺失；2025年01月16日17:00 |
+| ordinary-pinduoduo | 拼多多免单活动及退订指令 | `ordinary` | 一句中文摘要，不显示快递/银行/火车字段 |
+| weather-spb-wind-12 | 俄文，圣彼得堡 18 m/s 风力 | `weather_alert` | 圣彼得堡8月12日预计风力达18米/秒，请注意安全 |
+| weather-spb-rain-19 | 俄文，圣彼得堡强降雨 | `weather_alert` | 圣彼得堡8月19日预计有强降雨，请注意安全 |
+| weather-spb-wind-19 | 俄文，圣彼得堡 18 m/s 风力 | `weather_alert` | 圣彼得堡8月19日预计风力达18米/秒，请注意安全 |
+| weather-spb-rain-wind-23 | 俄文，大雨及 20 m/s 阵风 | `weather_alert` | 圣彼得堡8月23日预计大雨、阵风达20米/秒，请注意安全 |
+
+真实模型验收要求类别 ID 完全匹配，类别专属字段达到表中要求；摘要允许同义改写，但不得编造字段。俄文样本必须单独记录模型语言识别和中文摘要结果。

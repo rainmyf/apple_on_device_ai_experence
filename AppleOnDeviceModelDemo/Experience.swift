@@ -6,7 +6,7 @@ enum ExperienceCategory: String, CaseIterable, Hashable, Sendable {
 }
 
 enum ExperienceID: String, CaseIterable, Hashable, Sendable {
-    case foundationModel, guidedGeneration, contentTagging, smsClassification, streaming
+    case foundationModel, guidedGeneration, contentTagging, streaming
     case toolCalling, translation, naturalLanguage, vision
     case speechTranscription, soundRecognition, imageCreator
     case imagePlayground, writingTools, genmoji, smartReply
@@ -46,7 +46,6 @@ enum ExperienceActionBoundary: String, CaseIterable, Hashable, Sendable {
     case foundationModelPrompt = "Foundation Model prompt"
     case guidedGeneration = "Guided structured generation"
     case contentTagging = "Content tagging"
-    case smsClassification = "SMS classification"
     case streaming = "Streaming response"
     case toolCalling = "Local tool calling"
     case translation = "System translation"
@@ -95,8 +94,8 @@ enum HomeDirectionContent {
             route: .experience(.foundationModel)
         ),
         HomeDirectionEntry(
-            title: "System intelligence → App",
-            summary: "Open the app action that system intelligence can invoke.",
+            title: "系统智能调用 App",
+            summary: "验证系统智能如何发现并调用 App 的本地实况窗动作。",
             route: .experience(.appIntents)
         ),
     ]

@@ -40,19 +40,6 @@ enum ExperienceCatalog {
             lifecycle: .active
         ),
         ExperienceDefinition(
-            id: .smsClassification,
-            title: "SMS Classification",
-            summary: "Classify one SMS and highlight the entities in its original text.",
-            framework: "FoundationModels",
-            category: .languageText,
-            requirement: .appleIntelligence,
-            symbolName: "message.badge.filled.fill",
-            minimumOSVersion: "iOS 26.0",
-            openedAPI: "LanguageModelSession.respond(to:)",
-            isOnDevice: true,
-            lifecycle: .active
-        ),
-        ExperienceDefinition(
             id: .streaming,
             title: "Streaming",
             summary: "See incremental language model output as it arrives.",
@@ -272,7 +259,6 @@ enum ExperienceCatalog {
         case .foundationModel: .foundationModelPrompt
         case .guidedGeneration: .guidedGeneration
         case .contentTagging: .contentTagging
-        case .smsClassification: .smsClassification
         case .streaming: .streaming
         case .toolCalling: .toolCalling
         case .translation: .translation
@@ -298,8 +284,6 @@ enum ExperienceCatalog {
             "Enter text, then review the typed fields returned by the guided request."
         case .contentTagging:
             "Enter text, then review topics, entities, actions, and emotions."
-        case .smsClassification:
-            "Paste one SMS, optionally choose a bundled sample, and review its source-preserving labels."
         case .streaming:
             "Enter one prompt, then observe ordered partial text and cancel when needed."
         case .toolCalling:

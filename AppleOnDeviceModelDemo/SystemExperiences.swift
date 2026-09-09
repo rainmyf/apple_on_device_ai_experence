@@ -72,11 +72,11 @@ enum SystemExperienceContent {
             SystemExperiencePageContent(
                 id: id,
                 framework: "AppIntents",
-                entryPoint: "AppIntent.perform() → DescribeDemoCapabilityIntent.perform()",
+                entryPoint: "AppIntent.perform() → ActivityKit Live Activity",
                 executionKind: .deterministicAppAction,
-                instructions: "The intent returns a fixed, harmless instruction string for the supplied capability name. It demonstrates an App Intent contract, not a model invocation.",
-                limitations: "App Intents expose typed app actions to system surfaces; they do not grant this app access to Siri's private models or internal reasoning.",
-                usage: "Provide a capability name and invoke the intent from a supported system surface or test harness.",
+                instructions: "Run the three stages in order: prepare the state, send the deterministic update, and inspect the display payload.",
+                limitations: "The test harness validates the ActivityKit payload and update sequence. The system lock-screen rendering still requires a signed Widget Extension and an eligible device.",
+                usage: "Open the staged verification panel, run the demo, and inspect the icon, title, summary, and detail payload.",
                 status: CapabilityAvailability(requirement: .none)
             )
         case .customAdapter:
@@ -374,23 +374,7 @@ private struct SmartReplyTextView: UIViewRepresentable {
 }
 
 struct AppIntentsExperienceView: View {
-    private let content = SystemExperienceContent.content(for: .appIntents)
-    @State private var capability = "Writing Tools"
-
-    var body: some View {
-        systemPage(content) {
-            TextField("Capability name", text: $capability)
-                .padding(14)
-                .background(.white.opacity(0.8), in: RoundedRectangle(cornerRadius: 16, style: .continuous))
-                .overlay {
-                    RoundedRectangle(cornerRadius: 16, style: .continuous)
-                        .stroke(AppTheme.cardStroke, lineWidth: 1)
-                }
-            Text("DescribeDemoCapabilityIntent is available to system invocation surfaces; this sample page does not fabricate an invocation result.")
-                .font(.subheadline)
-                .foregroundStyle(AppTheme.secondaryInk)
-        }
-    }
+    var body: some View { SystemIntelligenceToAppVerificationView() }
 }
 
 struct CustomAdapterExperienceView: View {
@@ -406,32 +390,39 @@ struct CustomAdapterExperienceView: View {
     }
 }
 
-private func systemPage<Content: View>(
+func systemPage<Content: View>(
     _ content: SystemExperiencePageContent,
+    showsIntroDescription: Bool = true,
+    showsFooter: Bool = true,
     @ViewBuilder integration: () -> Content
 ) -> some View {
     ScrollView {
         VStack(alignment: .leading, spacing: 20) {
-            ExperienceIntro(experience: ExperienceCatalog[content.id])
+            ExperienceIntro(
+                experience: ExperienceCatalog[content.id],
+                showsDescription: showsIntroDescription
+            )
             integration()
-            ResultSurface(title: "Status", text: content.status.detail)
-            VStack(alignment: .leading, spacing: 8) {
-                Text("Usage")
-                    .font(.headline)
-                    .foregroundStyle(AppTheme.ink)
-                Text(content.usage)
+            if showsFooter {
+                ResultSurface(title: "Status", text: content.status.detail)
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("Usage")
+                        .font(.headline)
+                        .foregroundStyle(AppTheme.ink)
+                    Text(content.usage)
+                        .font(.subheadline)
+                        .foregroundStyle(AppTheme.secondaryInk)
+                    Text("Boundary: \(content.entryPoint)")
+                        .font(.footnote)
+                        .foregroundStyle(AppTheme.secondaryInk)
+                }
+                Text(content.instructions)
                     .font(.subheadline)
                     .foregroundStyle(AppTheme.secondaryInk)
-                Text("Boundary: \(content.entryPoint)")
+                Text("Limitations: \(content.limitations)")
                     .font(.footnote)
                     .foregroundStyle(AppTheme.secondaryInk)
             }
-            Text(content.instructions)
-                .font(.subheadline)
-                .foregroundStyle(AppTheme.secondaryInk)
-            Text("Limitations: \(content.limitations)")
-                .font(.footnote)
-                .foregroundStyle(AppTheme.secondaryInk)
         }
         .padding(20)
     }

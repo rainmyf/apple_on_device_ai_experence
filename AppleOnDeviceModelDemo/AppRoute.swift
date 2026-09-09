@@ -28,9 +28,7 @@ enum AppRouteResolver {
     }
 
     static func items(in category: ExperienceCategory) -> [ExperienceDefinition] {
-        ExperienceCatalog.all.filter {
-            $0.category == category && $0.id != .smsClassification
-        }
+        ExperienceCatalog.all.filter { $0.category == category }
     }
 
     static func destinationKind(for route: AppRoute) -> ExperienceDestinationKind {

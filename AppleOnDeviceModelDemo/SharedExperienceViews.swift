@@ -195,6 +195,7 @@ struct CapabilityStatusLabel: View {
 
 struct ExperienceIntro: View {
     let experience: ExperienceDefinition
+    var showsDescription = true
 
     private var metadata: ExperiencePageMetadata {
         ExperienceCatalog.pageMetadata(for: experience.id)
@@ -219,10 +220,12 @@ struct ExperienceIntro: View {
                         .foregroundStyle(AppTheme.accent(for: experience.category))
                 }
             }
-            Text(metadata.intro)
-                .font(.body)
-                .foregroundStyle(AppTheme.secondaryInk)
-                .fixedSize(horizontal: false, vertical: true)
+            if showsDescription {
+                Text(metadata.intro)
+                    .font(.body)
+                    .foregroundStyle(AppTheme.secondaryInk)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
             Label(metadata.status, systemImage: "info.circle")
                 .font(.subheadline)
                 .foregroundStyle(AppTheme.secondaryInk)
